@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello World!</title>
+    <script src="http://apps.bdimg.com/libs/jquery/1.6.4/jquery.js"></script>
+</head>
+<body>
+<script src="./react-0.13.0/build/react.js"></script>
+<script src="./react-0.13.0/build/JSXTransformer.js"></script>
+<script type="text/jsx">
+    var style={
+        color:'red',
+        border:'1px solid black'
+    }
+    var HelloWorld=React.createClass({
+        render:function(){
+            return <p>Hello {this.props.name?this.props.name:'World'}</p>;
+        }
+    });
+    var instance=React.render(<HelloWorld></HelloWorld>,document.body);
+    instance.setProps({name:'zhuang'});
+</script>
+
+</body>
+</html>

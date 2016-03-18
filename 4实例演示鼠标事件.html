@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标事件</title>
+    <style>
+        .a{
+            position: relative;
+            color:red;
+        }
+        .a span{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<script src="./react-0.13.0/build/react.js"></script>
+<script src="./react-0.13.0/build/JSXTransformer.js"></script>
+<script type="text/jsx">
+    var style={
+        border:'1px solid black',
+        height:'700px',
+        width:'700px',
+        backgroundColor:'gray'
+    }
+    var HelloWorld=React.createClass({
+        getInitialState:function(){
+            return {
+                x:0,
+                y:0
+            };
+        },
+        handleMouseMove:function(event){
+            this.setState({
+                x:event.clientX,
+                y:event.clientY
+            });
+        },
+        render:function(){
+            return <div style={style} onMouseMove={this.handleMouseMove} className="a">
+                <span style={{top:this.state.y,left:this.state.x}}>{this.state.x+'  '+this.state.y}</span>
+            </div>;
+        }
+    });
+    React.render(<HelloWorld></HelloWorld>,document.body);
+</script>
+
+</body>
+</html>

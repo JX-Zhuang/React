@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>属性和状态实例</title>
+</head>
+<body>
+<script src="./react-0.13.0/build/react.js"></script>
+<script src="./react-0.13.0/build/JSXTransformer.js"></script>
+<script type="text/jsx">
+    var HelloWorld=React.createClass({
+        handleChange:function(event){
+            console.log(event.target.value);
+        },
+        render:function(){
+            return <div>
+                <input onChange={this.handleChange}></input>
+                </div>
+        }
+    });
+    React.render(<HelloWorld></HelloWorld>,document.body);
+</script>
+</body>
+</html>

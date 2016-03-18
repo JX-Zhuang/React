@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mixin</title>
+</head>
+<body>
+<script src="./react-0.13.0/build/react.js"></script>
+<script src="./react-0.13.0/build/JSXTransformer.js"></script>
+<script type="text/jsx">
+    /*var BindingExample=React.createClass({
+     getInitialState:function(){
+     return {
+     text:''
+     }
+     },
+     handleChange:function(event){
+     this.setState({text:event.target.value});
+     },
+     render:function(){
+     return <div>
+     <input type="text" onChange={this.handleChange} placeholder="请输入内容"/>
+     <p>{this.state.text}</p>
+     </div>
+     }
+     });*/
+    //Mixin
+    var BindingMixin={
+        handleChange:function(key){
+            var that=this;
+            var newState={};
+            return function (event){
+                newState[key]=event.target.value;
+                that.setState(newState);
+            }
+        }
+    };
+    var BindingExample=React.createClass({
+        mixins:[BindingMixin],
+        getInitialState:function(){
+            return {
+                text:'',
+                comment:''
+            }
+        },
+        render:function(){
+            return <div>
+                <input type="text" onChange={this.handleChange('text')} placeholder="请输入内容"/>
+                <textarea onChange={this.handleChange('comment')}></textarea>
+                <p>{this.state.text}</p>
+                <p>{this.state.comment}</p>
+            </div>
+        }
+    });
+    React.render(<BindingExample></BindingExample> , document.body);
+
+    function Fibonacci(index){
+        var f=new Array();
+        f[0]=0;
+        f[1]=1;
+        if (index==1){
+            console.log('f[1]   '+f[1]);
+        }else{
+            console.log('f[1]   '+f[1]);
+            for(var i=2;i<=index;i++){
+                f[i]=f[i-1]+f[i-2];
+                console.log('f['+[i]+']   '+f[i]+'\n');
+            };
+        }
+    }
+    Fibonacci(6)
+
+</script>
+
+</body>
+</html>

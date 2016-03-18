@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello World!</title>
+</head>
+<body>
+    <script src="./react-0.13.0/build/react.js"></script>
+    <script src="./react-0.13.0/build/JSXTransformer.js"></script>
+    <script type="text/jsx">
+        var style={
+            color:'red',
+            border:'1px solid #000'
+        };
+        var rawHtml={
+            __html:"<h1>I'm inner HTML</h1>"
+        };
+        var HelloWorld=React.createClass({
+            /*2  3  getName:function(){
+              if(this.props.name)
+                return this.props.name;
+              else
+                return 'world';
+            },*/
+            render:function(){
+                //1.return <p>Hello {this.props.name?this.props.name:'World'}</p>
+                /*2.var name=this.getName();
+                return <p>Hello {name}</p>*/
+                //3.return <p>Hello {this.getName()}</p>
+               //4. return <p>Hello {this.props.name||'World'}</p>
+                /*5return <p>Hello {
+                    (function(obj){
+                        if (obj.props.name)
+                            return obj.props.name;
+                        else
+                            return 'World';
+                    }(this))
+                }</p>*/
+               // this.refs.childp
+               // return <p ref="childp">Hello World</p>
+                return <ul>
+                    <li key="1">1</li>
+                    <li key="2">2</li>
+                    <li key="3">3</li>
+                </ul>
+
+            }
+        });
+        React.render(<div style={style}><HelloWorld></HelloWorld></div>,document.body);
+    </script>
+</body>
+</html>
